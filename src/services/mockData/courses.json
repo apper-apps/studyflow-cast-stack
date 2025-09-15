@@ -1,0 +1,221 @@
+[
+  {
+    "Id": 1,
+    "name": "Introduction to Computer Science",
+    "code": "CS 101",
+    "professor": "Dr. Sarah Johnson",
+    "schedule": "MWF 10:00-11:00 AM",
+    "color": "#4F46E5",
+    "semester": "Spring 2024",
+    "credits": 4,
+    "gradeCategories": [
+      {
+        "name": "Exams",
+        "weight": 40,
+        "grades": [
+          { "score": 88, "name": "Midterm 1" },
+          { "score": 92, "name": "Midterm 2" }
+        ]
+      },
+      {
+        "name": "Assignments",
+        "weight": 35,
+        "grades": [
+          { "score": 95, "name": "Assignment 1" },
+          { "score": 87, "name": "Assignment 2" },
+          { "score": 91, "name": "Assignment 3" }
+        ]
+      },
+      {
+        "name": "Participation",
+        "weight": 15,
+        "grades": [
+          { "score": 98, "name": "Class Participation" }
+        ]
+      },
+      {
+        "name": "Final Project",
+        "weight": 10,
+        "grades": [
+          { "score": 93, "name": "Final Project" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "name": "Calculus I",
+    "code": "MATH 151",
+    "professor": "Prof. Michael Chen",
+    "schedule": "TTH 2:00-3:30 PM",
+    "color": "#7C3AED",
+    "semester": "Spring 2024",
+    "credits": 4,
+    "gradeCategories": [
+      {
+        "name": "Exams",
+        "weight": 50,
+        "grades": [
+          { "score": 85, "name": "Exam 1" },
+          { "score": 89, "name": "Exam 2" }
+        ]
+      },
+      {
+        "name": "Homework",
+        "weight": 30,
+        "grades": [
+          { "score": 92, "name": "HW Set 1-5" },
+          { "score": 88, "name": "HW Set 6-10" }
+        ]
+      },
+      {
+        "name": "Quizzes",
+        "weight": 20,
+        "grades": [
+          { "score": 94, "name": "Quiz Average" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "name": "English Composition",
+    "code": "ENG 101",
+    "professor": "Dr. Emily Rodriguez",
+    "schedule": "MW 1:00-2:30 PM",
+    "color": "#EC4899",
+    "semester": "Spring 2024",
+    "credits": 3,
+    "gradeCategories": [
+      {
+        "name": "Essays",
+        "weight": 60,
+        "grades": [
+          { "score": 91, "name": "Narrative Essay" },
+          { "score": 87, "name": "Argumentative Essay" }
+        ]
+      },
+      {
+        "name": "Discussion Posts",
+        "weight": 25,
+        "grades": [
+          { "score": 95, "name": "Discussion Average" }
+        ]
+      },
+      {
+        "name": "Final Portfolio",
+        "weight": 15,
+        "grades": [
+          { "score": 89, "name": "Portfolio" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "name": "General Biology",
+    "code": "BIO 101",
+    "professor": "Dr. James Wilson",
+    "schedule": "MWF 9:00-10:00 AM, Lab: T 2:00-5:00 PM",
+    "color": "#10B981",
+    "semester": "Spring 2024",
+    "credits": 4,
+    "gradeCategories": [
+      {
+        "name": "Lecture Exams",
+        "weight": 45,
+        "grades": [
+          { "score": 83, "name": "Exam 1" },
+          { "score": 87, "name": "Exam 2" }
+        ]
+      },
+      {
+        "name": "Lab Reports",
+        "weight": 30,
+        "grades": [
+          { "score": 94, "name": "Lab 1-3 Average" },
+          { "score": 91, "name": "Lab 4-6 Average" }
+        ]
+      },
+      {
+        "name": "Homework",
+        "weight": 15,
+        "grades": [
+          { "score": 89, "name": "HW Average" }
+        ]
+      },
+      {
+        "name": "Final Exam",
+        "weight": 10,
+        "grades": []
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "name": "World History",
+    "code": "HIST 101",
+    "professor": "Prof. Lisa Thompson",
+    "schedule": "TTH 11:00-12:30 PM",
+    "color": "#F59E0B",
+    "semester": "Spring 2024",
+    "credits": 3,
+    "gradeCategories": [
+      {
+        "name": "Research Papers",
+        "weight": 40,
+        "grades": [
+          { "score": 92, "name": "Ancient Civilizations" }
+        ]
+      },
+      {
+        "name": "Exams",
+        "weight": 35,
+        "grades": [
+          { "score": 88, "name": "Midterm" }
+        ]
+      },
+      {
+        "name": "Discussion Participation",
+        "weight": 25,
+        "grades": [
+          { "score": 96, "name": "Participation Average" }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "name": "Introduction to Psychology",
+    "code": "PSYC 101",
+    "professor": "Dr. Robert Davis",
+    "schedule": "MWF 11:00-12:00 PM",
+    "color": "#3B82F6",
+    "semester": "Spring 2024",
+    "credits": 3,
+    "gradeCategories": [
+      {
+        "name": "Exams",
+        "weight": 50,
+        "grades": [
+          { "score": 90, "name": "Exam 1" },
+          { "score": 86, "name": "Exam 2" }
+        ]
+      },
+      {
+        "name": "Research Project",
+        "weight": 30,
+        "grades": [
+          { "score": 93, "name": "Research Paper" }
+        ]
+      },
+      {
+        "name": "Quizzes",
+        "weight": 20,
+        "grades": [
+          { "score": 87, "name": "Quiz Average" }
+        ]
+      }
+    ]
+  }
+]

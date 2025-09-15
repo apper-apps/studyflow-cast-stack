@@ -1,0 +1,167 @@
+[
+  {
+    "Id": 1,
+    "courseId": "1",
+    "title": "Programming Assignment 3",
+    "description": "Implement a binary search tree with insert, delete, and search operations",
+    "dueDate": "2024-03-25T23:59:00Z",
+    "priority": "high",
+    "status": "pending",
+    "grade": null,
+    "category": "Programming"
+  },
+  {
+    "Id": 2,
+    "courseId": "2",
+    "title": "Calculus Problem Set 8",
+    "description": "Integration by parts and substitution problems",
+    "dueDate": "2024-03-22T23:59:00Z",
+    "priority": "medium",
+    "status": "completed",
+    "grade": 92,
+    "category": "Homework"
+  },
+  {
+    "Id": 3,
+    "courseId": "3",
+    "title": "Research Paper Draft",
+    "description": "Submit first draft of argumentative essay on climate change",
+    "dueDate": "2024-03-28T23:59:00Z",
+    "priority": "high",
+    "status": "pending",
+    "grade": null,
+    "category": "Essay"
+  },
+  {
+    "Id": 4,
+    "courseId": "4",
+    "title": "Biology Lab Report 4",
+    "description": "Photosynthesis and cellular respiration experiment analysis",
+    "dueDate": "2024-03-24T23:59:00Z",
+    "priority": "medium",
+    "status": "pending",
+    "grade": null,
+    "category": "Lab Report"
+  },
+  {
+    "Id": 5,
+    "courseId": "5",
+    "title": "Medieval History Essay",
+    "description": "Analysis of feudalism in medieval Europe",
+    "dueDate": "2024-03-30T23:59:00Z",
+    "priority": "medium",
+    "status": "pending",
+    "grade": null,
+    "category": "Essay"
+  },
+  {
+    "Id": 6,
+    "courseId": "1",
+    "title": "Data Structures Quiz",
+    "description": "Online quiz on arrays, linked lists, and stacks",
+    "dueDate": "2024-03-21T11:59:00Z",
+    "priority": "low",
+    "status": "completed",
+    "grade": 88,
+    "category": "Quiz"
+  },
+  {
+    "Id": 7,
+    "courseId": "6",
+    "title": "Psychology Research Proposal",
+    "description": "Propose an experimental design for studying memory retention",
+    "dueDate": "2024-04-02T23:59:00Z",
+    "priority": "high",
+    "status": "pending",
+    "grade": null,
+    "category": "Research"
+  },
+  {
+    "Id": 8,
+    "courseId": "2",
+    "title": "Calculus Exam 3 Preparation",
+    "description": "Study guide and practice problems for upcoming exam",
+    "dueDate": "2024-03-26T23:59:00Z",
+    "priority": "high",
+    "status": "pending",
+    "grade": null,
+    "category": "Study Guide"
+  },
+  {
+    "Id": 9,
+    "courseId": "3",
+    "title": "Peer Review Assignment",
+    "description": "Review and provide feedback on classmate's essay draft",
+    "dueDate": "2024-03-23T23:59:00Z",
+    "priority": "low",
+    "status": "pending",
+    "grade": null,
+    "category": "Peer Review"
+  },
+  {
+    "Id": 10,
+    "courseId": "4",
+    "title": "Biology Midterm Study Notes",
+    "description": "Compile comprehensive study notes for midterm exam",
+    "dueDate": "2024-03-27T23:59:00Z",
+    "priority": "medium",
+    "status": "pending",
+    "grade": null,
+    "category": "Study Material"
+  },
+  {
+    "Id": 11,
+    "courseId": "5",
+    "title": "Primary Source Analysis",
+    "description": "Analyze historical documents from the Renaissance period",
+    "dueDate": "2024-04-01T23:59:00Z",
+    "priority": "medium",
+    "status": "pending",
+    "grade": null,
+    "category": "Analysis"
+  },
+  {
+    "Id": 12,
+    "courseId": "6",
+    "title": "Psychology Case Study",
+    "description": "Complete case study analysis on cognitive behavioral therapy",
+    "dueDate": "2024-03-29T23:59:00Z",
+    "priority": "high",
+    "status": "pending",
+    "grade": null,
+    "category": "Case Study"
+  },
+  {
+    "Id": 13,
+    "courseId": "1",
+    "title": "Algorithm Analysis Report",
+    "description": "Compare time complexity of different sorting algorithms",
+    "dueDate": "2024-04-05T23:59:00Z",
+    "priority": "medium",
+    "status": "pending",
+    "grade": null,
+    "category": "Report"
+  },
+  {
+    "Id": 14,
+    "courseId": "2",
+    "title": "Derivative Applications Worksheet",
+    "description": "Complete problems on optimization and related rates",
+    "dueDate": "2024-03-20T23:59:00Z",
+    "priority": "low",
+    "status": "completed",
+    "grade": 95,
+    "category": "Worksheet"
+  },
+  {
+    "Id": 15,
+    "courseId": "4",
+    "title": "Genetics Problem Set",
+    "description": "Solve Mendelian genetics and probability problems",
+    "dueDate": "2024-04-03T23:59:00Z",
+    "priority": "medium",
+    "status": "pending",
+    "grade": null,
+    "category": "Problem Set"
+  }
+]
