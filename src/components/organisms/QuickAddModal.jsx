@@ -9,12 +9,12 @@ import { assignmentService } from "@/services/api/assignmentService"
 import { courseService } from "@/services/api/courseService"
 
 const QuickAddModal = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    title: "",
-    courseId: "",
-    dueDate: "",
-    priority: "medium",
-    description: ""
+const [formData, setFormData] = useState({
+    title_c: "",
+    course_id_c: "",
+    due_date_c: "",
+    priority_c: "medium",
+    description_c: ""
   })
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(false)
@@ -51,12 +51,12 @@ const QuickAddModal = ({ isOpen, onClose }) => {
 
     setLoading(true)
     try {
-      await assignmentService.create({
+await assignmentService.create({
         ...formData,
-        dueDate: new Date(formData.dueDate),
-        status: "pending",
-        grade: null,
-        category: "Assignment"
+        due_date_c: new Date(formData.due_date_c),
+        status_c: "pending",
+        grade_c: null,
+        category_c: "Assignment"
       })
       toast.success("Assignment added successfully!")
       setFormData({
@@ -113,9 +113,9 @@ const QuickAddModal = ({ isOpen, onClose }) => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormField
-            label="Assignment Title"
-            name="title"
-            value={formData.title}
+label="Assignment Title"
+            name="title_c"
+            value={formData.title_c}
             onChange={handleInputChange}
             placeholder="Enter assignment title"
             required
@@ -124,15 +124,15 @@ const QuickAddModal = ({ isOpen, onClose }) => {
           <FormField
             label="Course"
             type="select"
-            name="courseId"
-            value={formData.courseId}
+            name="course_id_c"
+            value={formData.course_id_c}
             onChange={handleInputChange}
             required
           >
             <option value="">Select a course</option>
             {courses.map(course => (
               <option key={course.Id} value={course.Id}>
-                {course.name}
+                {course.name_c}
               </option>
             ))}
           </FormField>
@@ -140,8 +140,8 @@ const QuickAddModal = ({ isOpen, onClose }) => {
           <FormField
             label="Due Date"
             type="date"
-            name="dueDate"
-            value={formData.dueDate}
+            name="due_date_c"
+            value={formData.due_date_c}
             onChange={handleInputChange}
             required
           />
@@ -151,16 +151,16 @@ const QuickAddModal = ({ isOpen, onClose }) => {
               Priority Level
             </label>
             <PrioritySelector
-              value={formData.priority}
+              value={formData.priority_c}
               onChange={handleInputChange}
-              name="priority"
+              name="priority_c"
             />
           </div>
 
           <FormField
             label="Description (Optional)"
-            name="description"
-            value={formData.description}
+            name="description_c"
+            value={formData.description_c}
             onChange={handleInputChange}
             placeholder="Brief description of the assignment"
           />

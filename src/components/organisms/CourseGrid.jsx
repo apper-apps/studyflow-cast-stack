@@ -9,13 +9,13 @@ const CourseGrid = ({ courses, onCourseClick }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {courses.map((course) => {
-        const currentGrade = calculateCourseGrade(course.gradeCategories)
+const currentGrade = calculateCourseGrade(course.grade_categories_c)
         const letterGrade = currentGrade ? gradeToLetter(currentGrade) : "N/A"
-        
+
         return (
           <Card
             key={course.Id}
-            className="p-6 cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+            className="p-6 cursor-pointer"
             onClick={() => onCourseClick?.(course)}
             hover
           >
@@ -23,13 +23,15 @@ const CourseGrid = ({ courses, onCourseClick }) => {
               <div className="flex items-center space-x-3">
                 <div 
                   className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-semibold"
-                  style={{ backgroundColor: course.color }}
+                  style={{ 
+                    backgroundColor: course.color_c 
+                  }}
                 >
                   <ApperIcon name="BookOpen" className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 display-font">{course.name}</h3>
-                  <p className="text-sm text-gray-500">{course.code}</p>
+                  <h3 className="font-semibold text-gray-900 display-font">{course.name_c}</h3>
+                  <p className="text-sm text-gray-500">{course.code_c}</p>
                 </div>
               </div>
               <Badge variant={currentGrade >= 90 ? "success" : currentGrade >= 80 ? "primary" : currentGrade >= 70 ? "warning" : "error"}>
@@ -37,18 +39,16 @@ const CourseGrid = ({ courses, onCourseClick }) => {
               </Badge>
             </div>
 
-            <div className="space-y-3">
-              <div className="flex items-center text-sm text-gray-600">
+            <div className="space-y-2 text-sm text-gray-600">
+              <div className="flex items-center">
                 <ApperIcon name="User" className="h-4 w-4 mr-2" />
-                {course.professor}
+                {course.professor_c}
               </div>
-              
-              <div className="flex items-center text-sm text-gray-600">
+              <div className="flex items-center">
                 <ApperIcon name="Clock" className="h-4 w-4 mr-2" />
-                {course.schedule}
+                {course.schedule_c}
               </div>
-
-              <div className="flex items-center text-sm text-gray-600">
+              <div className="flex items-center">
                 <ApperIcon name="Calendar" className="h-4 w-4 mr-2" />
                 {course.semester} • {course.credits} credits
               </div>

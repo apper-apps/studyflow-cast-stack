@@ -5,11 +5,11 @@ import ApperIcon from "@/components/ApperIcon"
 import { formatDate, isOverdue } from "@/utils/dateUtils"
 
 const AssignmentTable = ({ assignments, courses, onStatusChange, onDelete }) => {
-  const getCourse = (courseId) => courses.find(c => c.Id === parseInt(courseId))
+const getCourse = (courseId) => courses.find(c => c.Id === parseInt(courseId))
 
   const getStatusVariant = (assignment) => {
-    if (assignment.status === "completed") return "completed"
-    if (assignment.status === "overdue" || (assignment.status === "pending" && isOverdue(assignment.dueDate))) return "overdue"
+    if (assignment.status_c === "completed") return "completed"
+    if (assignment.status_c === "overdue" || (assignment.status_c === "pending" && isOverdue(assignment.due_date_c))) return "overdue"
     return "pending"
   }
 
@@ -48,42 +48,42 @@ const AssignmentTable = ({ assignments, courses, onStatusChange, onDelete }) => 
                 <tr key={assignment.Id} className="hover:bg-gray-50 transition-colors duration-150">
                   <td className="px-6 py-4">
                     <div>
-                      <div className="font-medium text-gray-900">{assignment.title}</div>
-                      {assignment.description && (
-                        <div className="text-sm text-gray-500 mt-1">{assignment.description}</div>
+<div className="font-medium text-gray-900">{assignment.title_c}</div>
+                      {assignment.description_c && (
+                        <div className="text-sm text-gray-500 mt-1">{assignment.description_c}</div>
                       )}
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     {course && (
                       <div className="flex items-center space-x-2">
-                        <div 
-                          className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: course.color }}
-                        />
-                        <span className="text-sm font-medium text-gray-900">{course.name}</span>
+<div 
+                        className="w-3 h-3 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: course.color_c }}
+                      />
+                      <span className="text-sm font-medium text-gray-900">{course.name_c}</span>
                       </div>
                     )}
                   </td>
-                  <td className="px-6 py-4">
-                    <span className={`text-sm ${isOverdue(assignment.dueDate) && assignment.status !== "completed" ? "text-red-600 font-medium" : "text-gray-600"}`}>
-                      {formatDate(assignment.dueDate)}
+<td className="px-6 py-4">
+                    <span className={`text-sm ${isOverdue(assignment.due_date_c) && assignment.status_c !== "completed" ? "text-red-600 font-medium" : "text-gray-600"}`}>
+                      {formatDate(assignment.due_date_c)}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <Badge variant={assignment.priority}>
-                      {assignment.priority}
+<Badge variant={assignment.priority_c}>
+                      {assignment.priority_c}
                     </Badge>
                   </td>
                   <td className="px-6 py-4">
-                    <Badge variant={statusVariant}>
-                      {assignment.status === "completed" ? "Completed" : 
-                       isOverdue(assignment.dueDate) ? "Overdue" : "Pending"}
+                    <Badge variant={getStatusVariant(assignment)}>
+                      {assignment.status_c === "completed" ? "Completed" : 
+                       isOverdue(assignment.due_date_c) ? "Overdue" : "Pending"}
                     </Badge>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-2">
-                      {assignment.status !== "completed" && (
+{assignment.status_c !== "completed" && (
                         <Button
                           size="sm"
                           variant="success"

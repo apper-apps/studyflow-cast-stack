@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react"
-import { toast } from "react-toastify"
-import Card from "@/components/atoms/Card"
-import Button from "@/components/atoms/Button"
-import Badge from "@/components/atoms/Badge"
-import Loading from "@/components/ui/Loading"
-import Error from "@/components/ui/Error"
-import Empty from "@/components/ui/Empty"
-import ApperIcon from "@/components/ApperIcon"
-import { assignmentService } from "@/services/api/assignmentService"
-import { courseService } from "@/services/api/courseService"
-import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay, isToday } from "date-fns"
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { assignmentService } from "@/services/api/assignmentService";
+import { courseService } from "@/services/api/courseService";
+import { addDays, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, isToday, startOfMonth, startOfWeek } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
+import Badge from "@/components/atoms/Badge";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
 
 const Calendar = () => {
   const [assignments, setAssignments] = useState([])
@@ -40,14 +40,14 @@ const Calendar = () => {
     }
   }
 
-  const getCourse = (courseId) => courses.find(c => c.Id === parseInt(courseId))
+const getCourse = (courseId) => courses.find(c => c.Id === parseInt(courseId))
 
+// Get assignments for a specific date
   const getAssignmentsForDate = (date) => {
     return assignments.filter(assignment => 
-      isSameDay(new Date(assignment.dueDate), date)
+      isSameDay(new Date(assignment.due_date_c), date)
     )
   }
-
   const navigateMonth = (direction) => {
     const newDate = new Date(currentDate)
     newDate.setMonth(currentDate.getMonth() + direction)
@@ -174,19 +174,19 @@ const Calendar = () => {
                     </div>
                     
                     <div className="space-y-1">
-                      {dayAssignments.slice(0, 2).map((assignment) => {
-                        const course = getCourse(assignment.courseId)
+{dayAssignments.slice(0, 2).map((assignment) => {
+                        const course = getCourse(assignment.course_id_c)
                         return (
                           <div
                             key={assignment.Id}
                             className="text-xs p-1 rounded truncate"
                             style={{ 
-                              backgroundColor: course?.color + "20", 
-                              borderLeft: `3px solid ${course?.color}` 
+                              backgroundColor: course?.color_c + "20", 
+                              borderLeft: `3px solid ${course?.color_c}` 
                             }}
-                            title={assignment.title}
+                            title={assignment.title_c}
                           >
-                            {assignment.title}
+                            {assignment.title_c}
                           </div>
                         )
                       })}
@@ -229,26 +229,26 @@ const Calendar = () => {
                 </div>
               ) : (
                 selectedDateAssignments.map((assignment) => {
-                  const course = getCourse(assignment.courseId)
+const course = getCourse(assignment.course_id_c)
                   return (
                     <div key={assignment.Id} className="p-3 bg-gray-50 rounded-lg border">
                       <div className="flex items-start justify-between mb-2">
-                        <h4 className="font-medium text-gray-900 text-sm">{assignment.title}</h4>
-                        <Badge variant={assignment.priority} className="text-xs">
-                          {assignment.priority}
+                        <h4 className="font-medium text-gray-900 text-sm">{assignment.title_c}</h4>
+                        <Badge variant={assignment.priority_c} className="text-xs">
+                          {assignment.priority_c}
                         </Badge>
                       </div>
                       {course && (
                         <div className="flex items-center space-x-2 mb-2">
                           <div 
                             className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: course.color }}
+                            style={{ backgroundColor: course.color_c }}
                           />
-                          <span className="text-xs text-gray-600">{course.name}</span>
+                          <span className="text-xs text-gray-600">{course.name_c}</span>
                         </div>
                       )}
-                      <Badge variant={assignment.status} className="text-xs">
-                        {assignment.status}
+                      <Badge variant={assignment.status_c} className="text-xs">
+                        {assignment.status_c}
                       </Badge>
                     </div>
                   )
@@ -271,35 +271,35 @@ const Calendar = () => {
 
             <div className="space-y-2">
               {assignments
-                .filter(a => {
-                  const dueDate = new Date(a.dueDate)
+.filter(a => {
+                  const dueDate = new Date(a.due_date_c)
                   const today = new Date()
                   const nextWeek = new Date()
                   nextWeek.setDate(today.getDate() + 7)
-                  return dueDate >= today && dueDate <= nextWeek && a.status !== "completed"
+                  return dueDate >= today && dueDate <= nextWeek && a.status_c !== "completed"
                 })
-                .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
+                .sort((a, b) => new Date(a.due_date_c) - new Date(b.due_date_c))
                 .slice(0, 5)
                 .map((assignment) => {
-                  const course = getCourse(assignment.courseId)
+                  const course = getCourse(assignment.course_id_c)
                   return (
                     <div key={assignment.Id} className="flex items-center space-x-3 p-2 hover:bg-gray-50 rounded">
                       {course && (
                         <div 
                           className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: course.color }}
+                          style={{ backgroundColor: course.color_c }}
                         />
                       )}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
-                          {assignment.title}
+                          {assignment.title_c}
                         </p>
                         <p className="text-xs text-gray-500">
-                          {format(new Date(assignment.dueDate), "MMM d")}
+                          {format(new Date(assignment.due_date_c), "MMM d")}
                         </p>
                       </div>
-                      <Badge variant={assignment.priority} className="text-xs">
-                        {assignment.priority}
+                      <Badge variant={assignment.priority_c} className="text-xs">
+                        {assignment.priority_c}
                       </Badge>
                     </div>
                   )

@@ -41,10 +41,10 @@ const Dashboard = () => {
   }
 
   const handleCompleteAssignment = async (assignmentId) => {
-    try {
-      await assignmentService.update(assignmentId, { status: "completed" })
+try {
+      await assignmentService.update(assignmentId, { status_c: "completed" })
       setAssignments(prev => prev.map(a => 
-        a.Id === assignmentId ? { ...a, status: "completed" } : a
+        a.Id === assignmentId ? { ...a, status_c: "completed" } : a
       ))
       toast.success("Assignment marked as completed!")
     } catch (error) {
@@ -59,26 +59,26 @@ const Dashboard = () => {
   const currentGPA = calculateGPA(courses)
   const totalAssignments = assignments.length
   const completedAssignments = assignments.filter(a => a.status === "completed").length
-  const pendingAssignments = assignments.filter(a => a.status === "pending").length
-  const overdueAssignments = assignments.filter(a => isOverdue(a.dueDate) && a.status !== "completed").length
-  
-  // Today's assignments
+const pendingAssignments = assignments.filter(a => a.status_c === "pending").length
+  const overdueAssignments = assignments.filter(a => isOverdue(a.due_date_c) && a.status_c !== "completed").length
+
+  // Calculate today's assignments
   const todayAssignments = assignments.filter(a => {
-    const daysUntil = getDaysUntilDue(a.dueDate)
-    return daysUntil <= 0 && a.status !== "completed"
+    const daysUntil = getDaysUntilDue(a.due_date_c)
+    return daysUntil <= 0 && a.status_c !== "completed"
   })
 
   // Upcoming assignments (next 7 days)
-  const upcomingAssignments = assignments
+const upcomingAssignments = assignments
     .filter(a => {
-      const daysUntil = getDaysUntilDue(a.dueDate)
-      return daysUntil > 0 && daysUntil <= 7 && a.status !== "completed"
+      const daysUntil = getDaysUntilDue(a.due_date_c)
+      return daysUntil > 0 && daysUntil <= 7 && a.status_c !== "completed"
     })
     .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
     .slice(0, 5)
 
   // Get course for assignment
-  const getCourse = (courseId) => courses.find(c => c.Id === parseInt(courseId))
+const getCourse = (courseId) => courses.find(c => c.Id === parseInt(courseId))
 
   if (courses.length === 0 && assignments.length === 0) {
     return (
@@ -103,7 +103,7 @@ const Dashboard = () => {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard
+<StatCard
           title="Current GPA"
           value={currentGPA.toFixed(2)}
           icon="Award"
@@ -151,24 +151,24 @@ const Dashboard = () => {
                 <p className="text-gray-500">No assignments due today. Great work!</p>
               </div>
             ) : (
-              todayAssignments.map((assignment) => {
-                const course = getCourse(assignment.courseId)
+todayAssignments.map((assignment) => {
+                const course = getCourse(assignment.course_id_c)
                 return (
                   <div key={assignment.Id} className="flex items-center justify-between p-4 bg-gradient-to-r from-red-50 to-red-100 rounded-lg border border-red-200">
                     <div className="flex items-center space-x-3">
                       {course && (
                         <div 
                           className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: course.color }}
+                          style={{ backgroundColor: course.color_c }}
                         />
                       )}
                       <div>
-                        <p className="font-medium text-gray-900">{assignment.title}</p>
-                        <p className="text-sm text-gray-600">{course?.name}</p>
+                        <p className="font-medium text-gray-900">{assignment.title_c}</p>
+                        <p className="text-sm text-gray-600">{course?.name_c}</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Badge variant={assignment.priority}>{assignment.priority}</Badge>
+                      <Badge variant={assignment.priority_c}>{assignment.priority_c}</Badge>
                       <Button
                         size="sm"
                         variant="success"
@@ -205,28 +205,28 @@ const Dashboard = () => {
                 <p className="text-gray-500">No upcoming assignments in the next week.</p>
               </div>
             ) : (
-              upcomingAssignments.map((assignment) => {
-                const course = getCourse(assignment.courseId)
-                const daysUntil = getDaysUntilDue(assignment.dueDate)
+upcomingAssignments.map((assignment) => {
+                const course = getCourse(assignment.course_id_c)
+                const daysUntil = getDaysUntilDue(assignment.due_date_c)
                 return (
                   <div key={assignment.Id} className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
                     <div className="flex items-center space-x-3">
                       {course && (
                         <div 
                           className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: course.color }}
+                          style={{ backgroundColor: course.color_c }}
                         />
                       )}
                       <div>
-                        <p className="font-medium text-gray-900">{assignment.title}</p>
-                        <p className="text-sm text-gray-600">{course?.name}</p>
+                        <p className="font-medium text-gray-900">{assignment.title_c}</p>
+                        <p className="text-sm text-gray-600">{course?.name_c}</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-gray-500">
                         {daysUntil === 1 ? "Tomorrow" : `${daysUntil} days`}
                       </span>
-                      <Badge variant={assignment.priority}>{assignment.priority}</Badge>
+                      <Badge variant={assignment.priority_c}>{assignment.priority_c}</Badge>
                     </div>
                   </div>
                 )
@@ -252,8 +252,8 @@ const Dashboard = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {courses.map((course) => {
-              const currentGrade = calculateCourseGrade(course.gradeCategories)
+{courses.map((course) => {
+              const currentGrade = calculateCourseGrade(course.grade_categories_c)
               const letterGrade = currentGrade ? gradeToLetter(currentGrade) : "N/A"
               
               return (
@@ -262,15 +262,15 @@ const Dashboard = () => {
                     <div className="flex items-center space-x-2">
                       <div 
                         className="w-3 h-3 rounded-full"
-                        style={{ backgroundColor: course.color }}
+                        style={{ backgroundColor: course.color_c }}
                       />
-                      <span className="font-medium text-gray-900">{course.name}</span>
+                      <span className="font-medium text-gray-900">{course.name_c}</span>
                     </div>
                     <Badge variant={currentGrade >= 90 ? "success" : currentGrade >= 80 ? "primary" : currentGrade >= 70 ? "warning" : "error"}>
                       {letterGrade}
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-600 mb-2">{course.professor}</p>
+                  <p className="text-sm text-gray-600 mb-2">{course.professor_c}</p>
                   {currentGrade && (
                     <p className="text-lg font-semibold text-gray-900">{currentGrade.toFixed(1)}%</p>
                   )}

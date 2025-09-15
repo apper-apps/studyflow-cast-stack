@@ -93,7 +93,7 @@ const Grades = () => {
             <div>
               <p className="text-sm text-gray-600">Total Credits</p>
               <p className="text-4xl font-bold text-gray-900 mt-1 display-font">
-                {courses.reduce((sum, course) => sum + course.credits, 0)}
+{courses.reduce((sum, course) => sum + course.credits_c, 0)}
               </p>
               <p className="text-sm text-gray-500 mt-1">Current semester</p>
             </div>
@@ -121,8 +121,8 @@ const Grades = () => {
 
       {/* Course Grades */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {courses.map((course) => {
-          const currentGrade = calculateCourseGrade(course.gradeCategories)
+{courses.map((course) => {
+          const currentGrade = calculateCourseGrade(course.grade_categories_c)
           const letterGrade = currentGrade ? gradeToLetter(currentGrade) : "N/A"
           
           return (
@@ -131,13 +131,13 @@ const Grades = () => {
                 <div className="flex items-center space-x-3">
                   <div 
                     className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-semibold"
-                    style={{ backgroundColor: course.color }}
+                    style={{ backgroundColor: course.color_c }}
                   >
                     <ApperIcon name="BookOpen" className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 display-font">{course.name}</h3>
-                    <p className="text-sm text-gray-500">{course.code} • {course.credits} credits</p>
+                    <h3 className="font-semibold text-gray-900 display-font">{course.name_c}</h3>
+                    <p className="text-sm text-gray-500">{course.code_c} • {course.credits_c} credits</p>
                   </div>
                 </div>
                 <Badge variant={currentGrade >= 90 ? "success" : currentGrade >= 80 ? "primary" : currentGrade >= 70 ? "warning" : "error"}>
@@ -161,7 +161,7 @@ const Grades = () => {
                   {course.gradeCategories && course.gradeCategories.length > 0 && (
                     <div className="mt-4 space-y-3">
                       <h4 className="text-sm font-medium text-gray-700">Grade Breakdown</h4>
-                      {course.gradeCategories.map((category, index) => {
+{course.grade_categories_c?.map((category, index) => {
                         const categoryAverage = category.grades && category.grades.length > 0 
                           ? category.grades.reduce((sum, grade) => sum + grade.score, 0) / category.grades.length
                           : 0
@@ -210,8 +210,8 @@ const Grades = () => {
         </div>
 
         <div className="space-y-4">
-          {courses.map((course) => {
-            const currentGrade = calculateCourseGrade(course.gradeCategories)
+{courses.map((course) => {
+            const currentGrade = calculateCourseGrade(course.grade_categories_c)
             const gpaPoints = currentGrade ? (currentGrade / 100) * 4 : 0
             
             return (
@@ -219,11 +219,11 @@ const Grades = () => {
                 <div className="flex items-center space-x-3">
                   <div 
                     className="w-4 h-4 rounded-full"
-                    style={{ backgroundColor: course.color }}
+                    style={{ backgroundColor: course.color_c }}
                   />
                   <div>
-                    <p className="font-medium text-gray-900">{course.name}</p>
-                    <p className="text-sm text-gray-500">{course.credits} credits</p>
+                    <p className="font-medium text-gray-900">{course.name_c}</p>
+                    <p className="text-sm text-gray-500">{course.credits_c} credits</p>
                   </div>
                 </div>
                 <div className="text-right">

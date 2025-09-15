@@ -47,37 +47,37 @@ const Assignments = () => {
   }
 
   const filterAssignments = () => {
-    let filtered = [...assignments]
+let filtered = [...assignments]
 
     // Search filter
     if (searchTerm) {
       filtered = filtered.filter(assignment =>
-        assignment.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        assignment.description?.toLowerCase().includes(searchTerm.toLowerCase())
+        assignment.title_c?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        assignment.description_c?.toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
 
     // Status filter
     if (statusFilter !== "all") {
-      filtered = filtered.filter(assignment => assignment.status === statusFilter)
+      filtered = filtered.filter(assignment => assignment.status_c === statusFilter)
     }
 
     // Course filter
     if (courseFilter !== "all") {
-      filtered = filtered.filter(assignment => assignment.courseId === courseFilter)
+      filtered = filtered.filter(assignment => assignment.course_id_c === courseFilter)
     }
 
     // Sort by due date
-    filtered.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
+    filtered.sort((a, b) => new Date(a.due_date_c) - new Date(b.due_date_c))
 
     setFilteredAssignments(filtered)
   }
 
-  const handleStatusChange = async (assignmentId, newStatus) => {
+const handleStatusChange = async (assignmentId, newStatus) => {
     try {
-      await assignmentService.update(assignmentId, { status: newStatus })
+      await assignmentService.update(assignmentId, { status_c: newStatus })
       setAssignments(prev => prev.map(a => 
-        a.Id === assignmentId ? { ...a, status: newStatus } : a
+        a.Id === assignmentId ? { ...a, status_c: newStatus } : a
       ))
       toast.success(`Assignment ${newStatus}!`)
     } catch (error) {
@@ -114,9 +114,9 @@ const Assignments = () => {
   }
 
   // Calculate stats
-  const pendingCount = assignments.filter(a => a.status === "pending").length
-  const completedCount = assignments.filter(a => a.status === "completed").length
-  const overdueCount = assignments.filter(a => a.status === "overdue").length
+const pendingCount = assignments.filter(a => a.status_c === "pending").length
+  const completedCount = assignments.filter(a => a.status_c === "completed").length
+  const overdueCount = assignments.filter(a => a.status_c === "overdue").length
   const completionRate = assignments.length > 0 ? Math.round((completedCount / assignments.length) * 100) : 0
 
   return (
@@ -199,9 +199,9 @@ const Assignments = () => {
             className="w-full sm:w-40"
           >
             <option value="all">All Courses</option>
-            {courses.map(course => (
+{courses.map(course => (
               <option key={course.Id} value={course.Id.toString()}>
-                {course.name}
+                {course.name_c}
               </option>
             ))}
           </Select>

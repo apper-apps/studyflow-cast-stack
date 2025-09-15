@@ -22,10 +22,10 @@ const Courses = () => {
 
   useEffect(() => {
     // Filter courses based on search term
-    const filtered = courses.filter(course =>
-      course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.professor.toLowerCase().includes(searchTerm.toLowerCase())
+const filtered = courses.filter(course =>
+      course.name_c?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.code_c?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.professor_c?.toLowerCase().includes(searchTerm.toLowerCase())
     )
     setFilteredCourses(filtered)
   }, [courses, searchTerm])
